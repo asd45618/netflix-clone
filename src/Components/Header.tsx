@@ -14,6 +14,7 @@ const Nav = styled(motion.nav)`
   padding: 20px 60px;
   font-size: 14px;
   color: white;
+  z-index: 99999;
 `;
 
 const Col = styled.div`
@@ -121,7 +122,7 @@ function Header() {
   const { scrollY } = useScroll();
   const { register, handleSubmit, setFocus } = useForm<IForm>();
   const onValid = (data: IForm) => {
-    navigate(`/search?keyword=${data.keyword}`);
+    navigate('/search', { state: { keyword: data.keyword } });
   };
 
   const toggleSearch = () => {
